@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fou"
+dynamic = ["version"]
+description = "Developer-controlled codebase inspection and navigation (not an AI agent)."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Mohammad Mehdi Masoumi" }]
+keywords = ["code inspection", "ast", "static analysis", "codebase navigation", "cli"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development",
+    "Typing :: Typed",
+]
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/mohammadmehdimasoumi/fou"
+Source = "https://github.com/mohammadmehdimasoumi/fou"
+Issues = "https://github.com/mohammadmehdimasoumi/fou/issues"
+
+[project.optional-dependencies]
+dev = ["pytest>=7"]
+
+[project.scripts]
+fou = "fou.cli:main"
+
+[tool.setuptools.dynamic]
+version = { attr = "fou._version.__version__" }
+
+[tool.setuptools.packages.find]
+include = ["fou*"]
+
+[tool.setuptools.package-data]
+fou = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
